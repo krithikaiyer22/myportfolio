@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krithika Iyer – Finance Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --cream: #f5f0e8;
+    --gold: #b8922a;
+    --gold-light: #d4aa50;
+    --warm-grey: #8a8070;
+    --rule: #e0d8cc;
+    --card-bg: #faf7f2;
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --red: #9b2226;
+    --red-light: #e63946;
+    --blue: #1d3557;
+    --blue-light: #457b9d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; letter-spacing: .04em;
+    color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--warm-grey); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4rem;
+    gap: 4rem;
+  }
+  .hero-text { padding-top: 6rem; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300; line-height: 1.02;
+    letter-spacing: -.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em { font-style: italic; color: var(--gold); }
+  .hero-tagline {
+    font-size: 1rem; font-weight: 300; line-height: 1.7;
+    color: var(--warm-grey); max-width: 42ch;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: .8rem;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--gold); padding-bottom: .2rem;
+    transition: color .2s, border-color .2s;
+  }
+  .hero-cta:hover { color: var(--gold); }
+  .hero-cta span { transition: transform .2s; }
+  .hero-cta:hover span { transform: translateX(4px); }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; padding-top: 6rem;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--gold);
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--warm-grey); margin-top: .5rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section { padding: 7rem 4rem; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; letter-spacing: .12em; color: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 300;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; }
+  .about-body { font-size: 1.05rem; line-height: 1.85; color: var(--warm-grey); font-weight: 300; }
+  .about-body strong { color: var(--ink); font-weight: 500; }
+  .skills-block { display: flex; flex-direction: column; gap: 1.2rem; }
+  .skill-item {}
+  .skill-name {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--warm-grey); margin-bottom: .5rem;
+    display: flex; justify-content: space-between;
+  }
+  .skill-bar { height: 2px; background: var(--rule); position: relative; }
+  .skill-fill {
+    position: absolute; top: 0; left: 0; height: 100%;
+    background: var(--gold);
+    animation: fillBar 1.2s ease-out forwards;
+    transform-origin: left;
+  }
+  @keyframes fillBar { from { width: 0; } }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 3rem; padding: 2.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-meta {}
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .exp-company { font-size: .9rem; color: var(--warm-grey); margin-top: .3rem; }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    margin-bottom: .8rem;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: .9rem; line-height: 1.7; color: var(--warm-grey);
+    padding-left: 1.2rem; position: relative; margin-bottom: .4rem;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0; color: var(--gold);
+  }
+
+  /* ── PROJECTS / DASHBOARDS ── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .projects-grid .project-card:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+  .project-card {
+    background: var(--card-bg); border: 1px solid var(--rule);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.08); }
+  .project-card-header {
+    padding: 2rem; border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: start;
+  }
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold); background: rgba(184,146,42,.1);
+    padding: .3rem .7rem; border-radius: 2px;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; margin-top: .8rem;
+  }
+  .project-period {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; color: var(--warm-grey); margin-top: .4rem;
+  }
+  .dashboard-preview { padding: 1.5rem; min-height: 280px; }
+
+  /* ── PENSION FUND DASHBOARD ── */
+  .pf-dashboard {}
+  .pf-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; margin-bottom: 1.2rem; }
+  .kpi {
+    background: white; border: 1px solid var(--rule);
+    padding: .8rem; text-align: center;
+  }
+  .kpi-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400;
+  }
+  .kpi-val.up { color: var(--green); }
+  .kpi-val.down { color: var(--red); }
+  .kpi-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .55rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--warm-grey); margin-top: .2rem;
+  }
+
+  /* bar chart */
+  .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 100px; margin-bottom: .5rem; }
+  .bar-group { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .bar {
+    width: 100%; border-radius: 2px 2px 0 0;
+    position: relative; cursor: pointer;
+    transition: opacity .2s;
+  }
+  .bar:hover { opacity: .75; }
+  .bar-label {
+    font-family: 'DM Mono', monospace; font-size: .5rem;
+    color: var(--warm-grey); margin-top: .3rem; white-space: nowrap;
+  }
+
+  /* donut */
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .donut-wrap { display: flex; flex-direction: column; align-items: center; }
+  .donut-svg { width: 100px; height: 100px; }
+  .donut-legend { display: flex; flex-direction: column; gap: .3rem; margin-top: .5rem; }
+  .legend-item { display: flex; align-items: center; gap: .4rem; font-size: .6rem; color: var(--warm-grey); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* line chart SVG */
+  .line-wrap { flex: 1; }
+  .chart-title {
+    font-family: 'DM Mono', monospace; font-size: .55rem;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--warm-grey); margin-bottom: .5rem;
+  }
+
+  /* ── MSME DASHBOARD ── */
+  .msme-dashboard {}
+  .msme-kpis { display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; margin-bottom: 1rem; }
+  .msme-kpi {
+    background: white; border: 1px solid var(--rule); padding: .6rem .5rem; text-align: center;
+  }
+  .msme-kpi-val {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+    color: var(--blue);
+  }
+  .msme-kpi-label {
+    font-family: 'DM Mono', monospace; font-size: .48rem;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--warm-grey); margin-top: .15rem;
+  }
+  .msme-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .msme-panel { background: white; border: 1px solid var(--rule); padding: .8rem; }
+
+  /* risk bars */
+  .risk-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .4rem; }
+  .risk-name { font-size: .6rem; color: var(--warm-grey); width: 60px; flex-shrink: 0; }
+  .risk-track { flex: 1; height: 6px; background: var(--rule); border-radius: 3px; }
+  .risk-fill { height: 100%; border-radius: 3px; }
+  .risk-pct { font-family: 'DM Mono', monospace; font-size: .55rem; color: var(--warm-grey); width: 28px; text-align: right; }
+
+  /* ── VIEW FULL BUTTON ── */
+  .project-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .view-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .view-btn:hover { opacity: .7; }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .edu-card {
+    background: var(--card-bg); border: 1px solid var(--rule);
+    padding: 2.5rem; position: relative; overflow: hidden;
+  }
+  .edu-card::after {
+    content: ''; position: absolute;
+    right: -30px; bottom: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%; border: 1px solid var(--rule);
+    opacity: .4;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; margin-bottom: .5rem;
+  }
+  .edu-school { font-size: .9rem; color: var(--warm-grey); }
+  .edu-gpa {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; color: var(--gold); margin-top: 1rem;
+    letter-spacing: .08em;
+  }
+  .edu-period {
+    font-family: 'DM Mono', monospace;
+    font-size: .6rem; color: var(--warm-grey); letter-spacing: .08em; margin-top: .3rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--ink); color: var(--cream);
+    padding: 7rem 4rem; display: grid;
+    grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem;
+  }
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; line-height: 1.1;
+  }
+  .contact-title em { font-style: italic; color: var(--gold-light); }
+  .contact-links { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1.2rem;
+    font-size: .9rem; color: rgba(245,240,232,.6);
+    text-decoration: none; padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(255,255,255,.1);
+    transition: background .2s, color .2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,.05); color: var(--cream); }
+  .contact-link-icon {
+    font-family: 'DM Mono', monospace; font-size: .7rem;
+    color: var(--gold-light); letter-spacing: .1em;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(13,13,13,.7); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center; padding: 2rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--card-bg); border: 1px solid var(--rule);
+    width: 100%; max-width: 900px; max-height: 90vh;
+    overflow-y: auto; padding: 3rem;
+    animation: modalIn .3s ease-out;
+  }
+  @keyframes modalIn { from { opacity:0; transform: translateY(20px); } }
+  .modal-close {
+    float: right; background: none; border: none; cursor: pointer;
+    font-family: 'DM Mono', monospace; font-size: .7rem;
+    color: var(--warm-grey); letter-spacing: .1em; text-transform: uppercase;
+  }
+  .modal-close:hover { color: var(--ink); }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; margin-bottom: .5rem;
+  }
+  .modal-sub {
+    font-family: 'DM Mono', monospace; font-size: .65rem;
+    color: var(--gold); letter-spacing: .1em; margin-bottom: 2rem;
+  }
+  .modal-body { font-size: .92rem; line-height: 1.8; color: var(--warm-grey); }
+  .modal-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400; color: var(--ink); margin: 1.5rem 0 .5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace; font-size: .6rem;
+    color: var(--warm-grey); letter-spacing: .08em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-stats { padding-top: 2rem; }
+    .section { padding: 5rem 1.5rem; }
+    .about-grid, .projects-grid, .edu-grid, .contact-section { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: .5rem; }
+    .contact-section { padding: 5rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: .5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Krithika Iyer</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Finance · Analytics · Fixed Income</p>
+    <h1 class="hero-name">Krithika<br><em>Iyer</em></h1>
+    <p class="hero-tagline">MS Finance graduate from Arizona State University with a foundation spanning fixed income markets, portfolio construction, risk analysis, data analytics, fintech, and client strategy. Open to full-time opportunities in asset management, wealth management, and corporate banking.</p>
+    <a href="#projects" class="hero-cta">View Projects <span>→</span></a>
+  </div>
+  <div class="hero-stats fade-in" style="transition-delay:.2s">
+    <div class="stat-card">
+      <div class="stat-number">8.7%</div>
+      <div class="stat-label">Annualized Return<br>Pension Portfolio</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3.45</div>
+      <div class="stat-label">GPA · MS Finance<br>Arizona State</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2+</div>
+      <div class="stat-label">Capstone Projects<br>Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Technical Tools<br>Excel · Bloomberg · Python</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-body">
+      <p>I am a finance graduate from Arizona State University's W.P. Carey School of Business with a broad foundation spanning <strong>fixed income markets, portfolio construction, risk analysis, fintech, data analytics, and client strategy</strong>. My academic path took me from Ahmedabad University — where I studied accounting, derivatives, and working capital management — to ASU's MS Finance program, where I applied that foundation to real-world institutional investment challenges.</p>
+      <br>
+      <p>My work ranges from building a <strong>pension fund LDI strategy</strong> that grew a $5B asset base to a 313% funded ratio, to <strong>MSME credit risk analysis</strong>, <strong>Reddit sentiment research</strong> on meme-stock volatility, <strong>Nike promotional analytics</strong> using SQL, and <strong>working capital analysis</strong> for an Indian sugar company. I've also completed the <strong>McKinsey.org Forward Program</strong> and was recognized as a <strong>UN Millennium Fellow</strong> for my Kshamta social impact project.</p>
+      <br>
+      <p>I combine <strong>quantitative rigor</strong> with strong interpersonal and communication skills — developed through recruitment internship experience and collaborative research across finance, fintech, and data. I'm drawn to roles where both sides of that skillset matter.</p>
+    </div>
+    <div class="skills-block fade-in" style="transition-delay:.15s">
+      <div class="skill-item">
+        <div class="skill-name"><span>Fixed Income / Bonds</span><span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Excel Modeling</span><span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Portfolio Construction</span><span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Bloomberg Terminal</span><span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Risk-Return Analysis</span><span>84%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:84%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Python / Tableau</span><span>70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience" style="padding-top:0">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="exp-item fade-in">
+    <div class="exp-meta">
+      <div class="exp-date">May – Jul 2023</div>
+      <div class="exp-company">ANS Placement Pvt. Ltd.<br>Ahmedabad, India</div>
+    </div>
+    <div>
+      <div class="exp-role">Finance & Recruitment Intern</div>
+      <ul class="exp-bullets">
+        <li>Candidates were dropping off late in the hiring process due to misaligned expectations, so introduced structured interview frameworks and early expectation-setting conversations — improving offer acceptance rates and reducing late-stage fallouts.</li>
+        <li>Hiring decisions lacked data backing, making it difficult to evaluate which channels and strategies were working, so built Excel dashboards tracking funnel conversion and sourcing effectiveness — enabling data-driven adjustments that improved pipeline quality and reduced time-to-fill.</li>
+        <li>Financial and candidate records contained inconsistencies that risked compliance failures, so designed a reconciliation and validation workflow using qualitative checks and Excel formulas to flag anomalies — achieving higher data integrity and audit-ready documentation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects" style="padding-top:0">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Projects &amp; Dashboards</h2>
+  </div>
+  <div class="projects-grid">
+
+    <!-- PROJECT 1: PENSION FUND -->
+    <div class="project-card fade-in" onclick="openModal('pf')">
+      <div class="project-card-header">
+        <div>
+          <div class="project-tag">Fixed Income · Portfolio · LDI</div>
+          <div class="project-title">Pension Fund<br>Investment Strategy</div>
+          <div class="project-period">Aug 2025 – Dec 2025 · FIN 575 Capstone · ASU</div>
+        </div>
+      </div>
+      <div class="dashboard-preview" style="padding:1rem">
+        <div class="pf-kpis" style="grid-template-columns:repeat(4,1fr)">
+          <div class="kpi"><div class="kpi-val up">8.7%</div><div class="kpi-label">Ann. Return</div></div>
+          <div class="kpi"><div class="kpi-val up">313%</div><div class="kpi-label">Final Funded Ratio</div></div>
+          <div class="kpi"><div class="kpi-val">1.18</div><div class="kpi-label">Sharpe Ratio</div></div>
+          <div class="kpi"><div class="kpi-val down">−19.8%</div><div class="kpi-label">Max Drawdown</div></div>
+        </div>
+        <div style="margin-top:.8rem">
+          <div class="chart-title">Funded Ratio Path — Real Data (2010–2025)</div>
+          <canvas id="frChart" height="100" style="width:100%;display:block"></canvas>
+        </div>
+        <div style="margin-top:.6rem">
+          <div class="chart-title">Annual Portfolio Returns (%)</div>
+          <canvas id="annualChart" height="60" style="width:100%;display:block"></canvas>
+        </div>
+      </div>
+      <div class="project-footer">
+        <span class="project-tag">Excel · Bloomberg Terminal · Python</span>
+        <a class="view-btn" href="#" onclick="event.preventDefault();openModal('pf')">Details →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: MSME -->
+    <div class="project-card fade-in" style="transition-delay:.1s" onclick="openModal('msme')">
+      <div class="project-card-header">
+        <div>
+          <div class="project-tag">Risk Analysis · SME Finance · India</div>
+          <div class="project-title">MSME Financial<br>Research – India</div>
+          <div class="project-period">Oct 2023 – Apr 2024 · Capstone · Ahmedabad University</div>
+        </div>
+      </div>
+      <div class="dashboard-preview">
+        <div class="msme-dashboard">
+          <div class="msme-kpis">
+            <div class="msme-kpi"><div class="msme-kpi-val">48</div><div class="msme-kpi-label">MSMEs Analyzed</div></div>
+            <div class="msme-kpi"><div class="msme-kpi-val">₹2.1Cr</div><div class="msme-kpi-label">Avg Revenue</div></div>
+            <div class="msme-kpi"><div class="msme-kpi-val">73%</div><div class="msme-kpi-label">Data Accuracy</div></div>
+            <div class="msme-kpi"><div class="msme-kpi-val">12</div><div class="msme-kpi-label">Risk Flags</div></div>
+          </div>
+          <div class="msme-grid">
+            <div class="msme-panel">
+              <div class="chart-title">Risk Profile Distribution</div>
+              <div style="margin-top:.6rem">
+                <div class="risk-row"><span class="risk-name">Credit</span><div class="risk-track"><div class="risk-fill" style="width:72%;background:#9b2226"></div></div><span class="risk-pct">72%</span></div>
+                <div class="risk-row"><span class="risk-name">Liquidity</span><div class="risk-track"><div class="risk-fill" style="width:55%;background:#b8922a"></div></div><span class="risk-pct">55%</span></div>
+                <div class="risk-row"><span class="risk-name">Operational</span><div class="risk-track"><div class="risk-fill" style="width:41%;background:#457b9d"></div></div><span class="risk-pct">41%</span></div>
+                <div class="risk-row"><span class="risk-name">Market</span><div class="risk-track"><div class="risk-fill" style="width:33%;background:#2d6a4f"></div></div><span class="risk-pct">33%</span></div>
+              </div>
+            </div>
+            <div class="msme-panel">
+              <div class="chart-title">Sector Breakdown</div>
+              <svg viewBox="0 0 100 80" style="width:100%;margin-top:.4rem">
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#457b9d" stroke-width="14" stroke-dasharray="66.9 175.9" stroke-dashoffset="0" transform="rotate(-90 40 40)"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#b8922a" stroke-width="14" stroke-dasharray="51.1 175.9" stroke-dashoffset="-66.9" transform="rotate(-90 40 40)"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#2d6a4f" stroke-width="14" stroke-dasharray="36.9 175.9" stroke-dashoffset="-118" transform="rotate(-90 40 40)"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#e0d8cc" stroke-width="14" stroke-dasharray="21 175.9" stroke-dashoffset="-154.9" transform="rotate(-90 40 40)"/>
+                <text x="40" y="43" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#0d0d0d">Sectors</text>
+                <text x="75" y="22" font-family="DM Mono,monospace" font-size="5.5" fill="#457b9d">■ Mfg 38%</text>
+                <text x="75" y="34" font-family="DM Mono,monospace" font-size="5.5" fill="#b8922a">■ Svc 29%</text>
+                <text x="75" y="46" font-family="DM Mono,monospace" font-size="5.5" fill="#2d6a4f">■ Trd 21%</text>
+                <text x="75" y="58" font-family="DM Mono,monospace" font-size="5.5" fill="#8a8070">■ Oth 12%</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <span class="project-tag">Excel · Risk Modeling · Data Validation</span>
+        <a class="view-btn" href="#" onclick="event.preventDefault();openModal('msme')">Details →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: REDDIT SENTIMENT -->
+    <div class="project-card fade-in" style="transition-delay:.15s" onclick="openModal('reddit')">
+      <div class="project-card-header">
+        <div>
+          <div class="project-tag">FinTech · NLP · Behavioral Finance</div>
+          <div class="project-title">Reddit Sentiment &amp;<br>Meme-Stock Volatility</div>
+          <div class="project-period">FIN 494/591 · ASU · W.P. Carey</div>
+        </div>
+      </div>
+      <div class="dashboard-preview" style="padding:1rem">
+        <div class="pf-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:.8rem">
+          <div class="kpi"><div class="kpi-val up">4,890</div><div class="kpi-label">30-min Windows</div></div>
+          <div class="kpi"><div class="kpi-val" style="color:#9b2226">42%</div><div class="kpi-label">High-Vol (Macro)</div></div>
+          <div class="kpi"><div class="kpi-val">1.18</div><div class="kpi-label">Tail-share coef</div></div>
+        </div>
+        <div class="chart-title" style="margin-bottom:.4rem">High-Volatility Hit Rate by Driver</div>
+        <div style="display:flex;gap:4px;align-items:flex-end;height:80px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'DM Mono',monospace;font-size:.5rem;color:#2d6a4f">74%</div>
+            <div style="width:100%;background:#2d6a4f;height:59px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">GME Post</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'DM Mono',monospace;font-size:.5rem;color:#9b2226">6%</div>
+            <div style="width:100%;background:#9b2226;height:5px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">GME Sent</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'DM Mono',monospace;font-size:.5rem;color:#2d6a4f">49%</div>
+            <div style="width:100%;background:#2d6a4f;height:39px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">AMC Post</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'DM Mono',monospace;font-size:.5rem;color:#9b2226">3%</div>
+            <div style="width:100%;background:#9b2226;height:2px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">AMC Sent</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'DM Mono',monospace;font-size:.5rem;color:#b8922a">42%</div>
+            <div style="width:100%;background:#b8922a;height:34px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">Macro</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'DM Mono',monospace;font-size:.5rem;color:#8a8070">25%</div>
+            <div style="width:100%;background:#e0d8cc;height:20px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">Normal</div>
+          </div>
+        </div>
+        <div style="margin-top:.8rem;font-family:'DM Mono',monospace;font-size:.6rem;color:var(--warm-grey);line-height:1.5">
+          Key: posting volume (4.62 coef, p≈4.7e-40) beats sentiment alone. Combined spikes signal exhaustion (−2.86 interaction term).
+        </div>
+      </div>
+      <div class="project-footer">
+        <span class="project-tag">Python · VADER · Logistic Regression</span>
+        <a class="view-btn" href="#" onclick="event.preventDefault();openModal('reddit')">Details →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 4: PONNI SUGARS -->
+    <div class="project-card fade-in" style="transition-delay:.2s" onclick="openModal('ponni')">
+      <div class="project-card-header">
+        <div>
+          <div class="project-tag">Working Capital · Corporate Finance</div>
+          <div class="project-title">Working Capital Analysis<br>of Ponni Sugars</div>
+          <div class="project-period">FAC336 · Ahmedabad University</div>
+        </div>
+      </div>
+      <div class="dashboard-preview" style="padding:1rem">
+        <div class="pf-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:.8rem">
+          <div class="kpi"><div class="kpi-val up">3.0x</div><div class="kpi-label">Current Ratio '23</div></div>
+          <div class="kpi"><div class="kpi-val">₹96.4Cr</div><div class="kpi-label">Net Working Capital</div></div>
+          <div class="kpi"><div class="kpi-val up">4.62x</div><div class="kpi-label">Inventory Turnover</div></div>
+        </div>
+        <div class="chart-title" style="margin-bottom:.5rem">Key Ratios — 2021 to 2023</div>
+        <canvas id="ponniChart" height="90" style="width:100%;display:block"></canvas>
+      </div>
+      <div class="project-footer">
+        <span class="project-tag">Excel · Financial Ratio Analysis · India</span>
+        <a class="view-btn" href="#" onclick="event.preventDefault();openModal('ponni')">Details →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 5: NIKE / CIS 505 -->
+    <div class="project-card fade-in" style="transition-delay:.25s" onclick="openModal('nike')">
+      <div class="project-card-header">
+        <div>
+          <div class="project-tag">Database Analytics · SQL · Strategy</div>
+          <div class="project-title">Nike Promotional Analytics<br>&amp; Database Design</div>
+          <div class="project-period">CIS 505 · ASU · W.P. Carey</div>
+        </div>
+      </div>
+      <div class="dashboard-preview" style="padding:1rem">
+        <div class="pf-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:.8rem">
+          <div class="kpi"><div class="kpi-val" style="color:#457b9d">9%</div><div class="kpi-label">Nike Sales Drop '25</div></div>
+          <div class="kpi"><div class="kpi-val up">$687</div><div class="kpi-label">Avg LE Buyer Spend</div></div>
+          <div class="kpi"><div class="kpi-val">7</div><div class="kpi-label">DB Tables Designed</div></div>
+        </div>
+        <div class="chart-title" style="margin-bottom:.5rem">Revenue by Discount Range (DSG Channel)</div>
+        <div style="display:flex;gap:5px;align-items:flex-end;height:75px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">$1.76M</div>
+            <div style="width:100%;background:#2d6a4f;height:68px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.45rem;color:var(--warm-grey)">No disc</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">$870K</div>
+            <div style="width:100%;background:#b8922a;height:34px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.45rem;color:var(--warm-grey)">0-10%</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">$2.60M</div>
+            <div style="width:100%;background:#457b9d;height:75px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.45rem;color:var(--warm-grey)">10-20%</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">$2.40M</div>
+            <div style="width:100%;background:#457b9d;height:69px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.45rem;color:var(--warm-grey)">20-30%</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">$1.80M</div>
+            <div style="width:100%;background:#9b2226;height:52px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.45rem;color:var(--warm-grey)">30-40%</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--warm-grey)">$1.62M</div>
+            <div style="width:100%;background:#9b2226;height:47px;border-radius:2px 2px 0 0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:.45rem;color:var(--warm-grey)">40-50%</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <span class="project-tag">SQL · EER Diagrams · Data Strategy</span>
+        <a class="view-btn" href="#" onclick="event.preventDefault();openModal('nike')">Details →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS & RECOGNITION -->
+<section class="section" id="certifications" style="padding-top:0">
+  <div class="section-header fade-in">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Certifications &amp; Recognition</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="fade-in">
+    <div class="edu-card" style="padding:1.8rem">
+      <div style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">DEC 2025</div>
+      <div class="edu-degree" style="font-size:1.3rem">McKinsey.org<br>Forward Program</div>
+      <div class="edu-school" style="margin-top:.4rem">McKinsey.org</div>
+      <div style="margin-top:.8rem;font-size:.8rem;color:var(--warm-grey);line-height:1.6">Problem-solving frameworks · Structured communication · Digital toolkit · Resilience mindset</div>
+    </div>
+    <div class="edu-card" style="padding:1.8rem">
+      <div style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">2023</div>
+      <div class="edu-degree" style="font-size:1.3rem">UN Millennium<br>Fellow – Kshamta</div>
+      <div class="edu-school" style="margin-top:.4rem">United Nations Academic Impact &amp; Millennium Campus Network</div>
+      <div style="margin-top:.8rem;font-size:.8rem;color:var(--warm-grey);line-height:1.6">Led Kshamta, a social impact project focused on community empowerment and access to financial literacy, recognized by the United Nations Academic Impact.</div>
+    </div>
+    <div class="edu-card" style="padding:1.8rem">
+      <div style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">ONGOING</div>
+      <div class="edu-degree" style="font-size:1.3rem">Technical &amp;<br>Professional Skills</div>
+      <div class="edu-school" style="margin-top:.4rem">Bloomberg · Excel · Python · SQL · Tableau</div>
+      <div style="margin-top:.8rem;font-size:.8rem;color:var(--warm-grey);line-height:1.6">Bloomberg Terminal · Advanced Excel Modeling · Python for Finance · MySQL · Tableau · Financial Modeling</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education" style="padding-top:0">
+  <div class="section-header fade-in">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="edu-grid fade-in">
+    <div class="edu-card">
+      <div class="edu-degree">MS, Finance</div>
+      <div class="edu-school">Arizona State University — W.P. Carey School of Business · Tempe, Arizona</div>
+      <div class="edu-gpa">GPA 3.45 · Graduated Dec 2025</div>
+      <div class="edu-period">Aug 2024 – Dec 2025</div>
+      <div style="margin-top:1rem;font-size:.8rem;color:var(--warm-grey);line-height:1.6">
+        Fixed Income · Portfolio Construction · FinTech/Blockchain · Applied Finance · Database Analytics
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">B.Com, Accounting</div>
+      <div class="edu-school">Ahmedabad University · Ahmedabad, India</div>
+      <div class="edu-gpa">GPA 2.60</div>
+      <div class="edu-period">Aug 2020 – May 2024</div>
+      <div style="margin-top:1rem;font-size:.8rem;color:var(--warm-grey);line-height:1.6">
+        Financial Accounting · Derivatives · Investment Strategies · Fixed Income · Risk Management in Banks &amp; Financial Institutions · Fintech/Blockchain · Security Analysis &amp; Portfolio Management · Working Capital Management · Financial Modelling
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="fade-in">
+    <h2 class="contact-title">Let's<br><em>Connect</em></h2>
+    <p style="margin-top:1.5rem;font-size:.9rem;color:rgba(245,240,232,.5);font-weight:300;max-width:36ch;line-height:1.7">
+      I'm actively seeking full-time opportunities in finance — particularly in asset management, wealth management, and corporate banking. I'd love to discuss how my analytical background can contribute to your team.
+    </p>
+  </div>
+  <div class="contact-links fade-in" style="transition-delay:.15s">
+    <a href="tel:4072768099" class="contact-link">
+      <span class="contact-link-icon">TEL</span>
+      (407) 276 8099
+    </a>
+    <a href="mailto:krithikaiyer2002@gmail.com" class="contact-link">
+      <span class="contact-link-icon">EMAIL</span>
+      krithikaiyer2002@gmail.com
+    </a>
+    <a href="https://linkedin.com" target="_blank" class="contact-link">
+      <span class="contact-link-icon">LI</span>
+      LinkedIn Profile
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Krithika Iyer</p>
+  <p>MS Finance · Arizona State University · Class of 2025</p>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-pf" onclick="closeModal(event,'pf')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn('pf')">✕ Close</button>
+    <div class="modal-sub">CAPSTONE PROJECT · AUG 2025 – DEC 2025</div>
+    <h2 class="modal-title">Pension Fund Investment Strategy</h2>
+    <div class="modal-body">
+      <h3>The Problem</h3>
+      <p>The plan started in January 2010 with $5.0B in assets against $5.9B in liabilities — an initial funded ratio of 84.7% and a funding deficit of $0.9B. The sponsor needed to close this gap using investment returns in a controlled risk framework, rather than contributions alone. The challenge: <strong>how to transform an underfunded plan into a surplus position without taking on risks that could produce large drawdowns in funded status</strong>.</p>
+
+      <h3>Why This Approach</h3>
+      <p>Rather than optimizing assets in isolation, we framed the entire problem as <strong>surplus optimization — assets minus liabilities</strong>. This changed every decision. A long-duration fixed income allocation of 35% wasn't about earning yield; it was about hedging the plan's 13-year liability duration. TIPS (10% of portfolio) were included not for return, but to protect the real value of promised benefits against inflation. The quality-biased equity sleeve (SPY, EFA, EEM, QUAL — totaling 35%) was sized to generate the growth needed to close the funding gap, while its downside was capped by SPY collar overlays.</p>
+      <p style="margin-top:.8rem">The FX hedge policy — 50% EUR hedge and 40% JPY hedge via rolling forwards — was chosen because backtesting from 2015–2025 showed FX exposure mainly contributed volatility without improving long-run returns. Partial hedging reduced surplus noise at low cost. JPY tail-risk calls were layered in because the yen historically appreciates in risk-off episodes — exactly when the pension sponsor most needs protection.</p>
+
+      <h3>Empirical Results (2010–2025)</h3>
+      <p>The portfolio delivered <strong>8.7% annualized returns</strong> with 7.4% volatility and a Sharpe ratio of 1.18. Assets grew to $18.28B; liabilities stayed near $5.84B; the funded ratio rose from 84.7% to <strong>313%</strong>, with a surplus of $12.44B. The worst drawdown of –19.8% (2022) never pushed the funded ratio below its starting level, because rising discount rates simultaneously reduced the present value of liabilities — confirming that surplus-space analysis gives a more accurate picture of economic risk than asset-only metrics.</p>
+
+      <h3>Stress Tests</h3>
+      <p>Under <strong>stagflation</strong>, assets fell but liabilities fell further (discount rates rose sharply), improving the funded ratio to 96.7%. A <strong>global recession</strong> with falling rates was the worst outcome — funded ratio dropped to 69.3% — because declining discount rates simultaneously inflated liabilities. A <strong>soft landing</strong> brought the plan to near full funding at 99.9%. These scenarios confirmed that the liability discount rate, not just equity performance, drives funded-status outcomes.</p>
+
+      <h3>Tools Used</h3>
+      <p>Microsoft Excel (Advanced Financial Modeling), Yahoo Finance data pipeline (monthly adjusted close prices, 2010–2025), Bloomberg Terminal, Python for data validation and returns engineering, Chart.js for interactive visualization.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-msme" onclick="closeModal(event,'msme')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn('msme')">✕ Close</button>
+    <div class="modal-sub">CAPSTONE PROJECT · OCT 2023 – APR 2024</div>
+    <h2 class="modal-title">MSME Financial Research – India</h2>
+    <div class="modal-body">
+      <h3>The Problem</h3>
+      <p>MSMEs in India represent over 30% of GDP but remain chronically underserved by formal credit markets — largely because lenders lack reliable financial data to assess their risk. The core issue isn't that these businesses are necessarily high-risk; <strong>it's that the data used to evaluate them is inconsistent, unreconciled, and often misleading</strong>. Poor data quality leads to either over-denial of credit (leaving viable businesses unfunded) or mispriced risk (leading to unexpected defaults).</p>
+
+      <h3>Why This Approach</h3>
+      <p>The research prioritized <strong>data validation and reconciliation before any risk analysis</strong> — because building a risk model on dirty data produces confident but wrong conclusions. Most financial analyses skip this step or treat it as administrative. Here, it was treated as the analytical foundation: until we knew what the numbers actually meant, no risk scoring was meaningful.</p>
+      <p style="margin-top:.8rem">A combined quantitative and qualitative framework was chosen because MSME financials don't tell the full story alone. A manufacturing firm with volatile revenue might be perfectly healthy if its cash conversion cycle is tight and its customers are stable — context that pure ratio analysis misses. <strong>Layering qualitative insights onto quantitative signals</strong> allowed for more accurate risk classification than either method could achieve alone.</p>
+      <p style="margin-top:.8rem">Risk profiling was structured across four dimensions — credit, liquidity, operational, and market risk — because each represents a distinct type of failure mode. Treating them separately made it possible to identify which businesses were exposed to which specific risks, rather than collapsing everything into a single score that obscures the nature of the problem.</p>
+
+      <h3>Outcome & Impact</h3>
+      <p>The reconciliation process surfaced meaningful discrepancies across the dataset, ultimately improving usable data accuracy to 73%. Credit risk was identified as the dominant concern (72% of entities), but the disaggregated analysis revealed that many of those flagged for credit risk were actually solvent — their issue was liquidity timing, not fundamental insolvency. <strong>That distinction matters enormously for how a lender or investor should respond</strong>: a liquidity problem is solvable with structured credit; an insolvency problem is not.</p>
+
+      <h3>Tools Used</h3>
+      <p>Microsoft Excel (Data Validation, Reconciliation, Pivot Tables, VLOOKUP, Financial Modeling), Qualitative Analysis frameworks, structured Risk Assessment matrices.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-reddit" onclick="closeModal(event,'reddit')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn('reddit')">✕ Close</button>
+    <div class="modal-sub">RESEARCH PROJECT · FIN 494/591 FINTECH/BLOCKCHAIN · ASU W.P. CAREY</div>
+    <h2 class="modal-title">Reddit Sentiment Cascades &amp; Meme-Stock Volatility</h2>
+    <div class="modal-body">
+      <h3>The Problem</h3>
+      <p>The 2021 meme-stock phenomenon — GME, AMC, BB, KOSS, NOK — raised a real empirical question: does Reddit's r/WallStreetBets actually contain predictive information about near-term volatility, or is it noise? Most prior research collapsed sentiment into daily averages and used opaque data pipelines, making results hard to reproduce or act on.</p>
+      <h3>Approach &amp; Methodology</h3>
+      <p>We built a fully reproducible Python pipeline processing ~4,890 thirty-minute windows across 6 tickers (Jan–Aug 2021). For each window we computed VADER sentiment scores weighted by engagement (upvotes + comments), posting volume, sentiment z-scores, rolling tail-share (share of extreme windows over last 20), and session/macro context labels. Forward 5-day realized volatility was the outcome variable, linked via Yahoo Finance price data.</p>
+      <h3>Key Findings</h3>
+      <p><strong>Posting volume beats raw sentiment</strong> — the posts-per-minute coefficient was 4.62 (p≈4.7e-40), the strongest predictor in the logistic model. <strong>Persistent extremes matter more than one-off spikes</strong> — rising tail-share from 0.10 to 0.30 nearly doubles high-volatility odds (coef: 2.12, p=3.6e-4). <strong>Macro events amplify everything</strong> — macro-tagged windows had a 42% high-vol hit rate vs. 24.9% for normal windows. Most strikingly, <strong>simultaneous sentiment + volume spikes signal exhaustion, not takeoff</strong> — the interaction term was −2.86 (p≈3e-12), with high-vol rate collapsing to just 4.9% when both spike together. Volatility also cooled ~12% within two days after a sentiment spike.</p>
+      <h3>Tools Used</h3>
+      <p>Python (pandas, VADER v3.3.2, scikit-learn, matplotlib), Yahoo Finance, Kaggle WSB dataset, logistic regression and event-study analysis.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ponni" onclick="closeModal(event,'ponni')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn('ponni')">✕ Close</button>
+    <div class="modal-sub">FAC336 WORKING CAPITAL MANAGEMENT · AHMEDABAD UNIVERSITY</div>
+    <h2 class="modal-title">Working Capital Analysis — Ponni Sugars (Erode) Ltd.</h2>
+    <div class="modal-body">
+      <h3>The Problem</h3>
+      <p>Ponni Sugars (Erode) Limited, an Indian sugar manufacturer, showed a mixed financial trajectory over 2021–2023. The central question was whether its working capital management was keeping pace with its rapid revenue growth — and what the risk signals were for short-term liquidity and operational sustainability.</p>
+      <h3>Analysis</h3>
+      <p>We analyzed five years of P&amp;L and balance sheet data (Mar '19–Mar '23) across all core working capital components: inventories, trade receivables, cash, payables, and short-term provisions. Key ratios computed included Current Ratio (3.0x in 2023), Quick Ratio (1.28x), Inventory Turnover (4.62x), Net Working Capital Ratio (0.19), and DSO/DPO cycles. The working capital cycle and positive vs. negative capital dynamics were evaluated against industry context and the company's seasonal sugar-crushing business model.</p>
+      <h3>Key Findings</h3>
+      <p>Working capital grew from ₹76.3Cr to ₹96.4Cr (2021–2023), but the 4.67% increase in 2022–23 lagged the 48.9% revenue surge, suggesting increasing pressure on cash conversion. DSO fell sharply from 57.5 to 18.9 days — a positive efficiency signal — while DPO also declined from 70.1 to 45.5 days, meaning the company was paying suppliers faster than before. The Quick Ratio declining from 1.57 to 1.28 flagged growing inventory concentration risk. The company became debt-free by 2022 (total debt = ₹0), strengthening its credit profile significantly.</p>
+      <h3>Recommendations</h3>
+      <p>Optimise inventory levels to improve quick ratio liquidity; negotiate longer supplier payment terms to widen the cash conversion gap; consider revolving credit facilities to buffer seasonal production peaks without eroding working capital efficiency.</p>
+      <h3>Tools Used</h3>
+      <p>Microsoft Excel (ratio analysis, trend modeling), BSE India financial disclosures, Dion Global Solutions financial data.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-nike" onclick="closeModal(event,'nike')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn('nike')">✕ Close</button>
+    <div class="modal-sub">CIS 505 TEAM PROJECT · ASU W.P. CAREY SCHOOL OF BUSINESS</div>
+    <h2 class="modal-title">Nike Promotional Analytics &amp; Database Design</h2>
+    <div class="modal-body">
+      <h3>The Problem</h3>
+      <p>Nike reported a 9% global sales drop in Q3 FY2025, its steepest decline in nearly five years, despite aggressive discounting. App downloads fell 35%, in-store foot traffic dropped 11%, and digital sales declined 15%. The core issue: Nike lacked clear visibility into which customer segments, product categories, and channels were delivering the strongest return on promotional investment — and which discounts were driving volume versus margin erosion.</p>
+      <h3>Database Design</h3>
+      <p>Our team designed a 7-table relational database schema (Sales, Customer, Product, DSG_Data, Retailer, Marketing, Review) with an EER diagram mapping relationships across Nike's direct-to-consumer and partner retail channels. The schema supported analysis across price elasticity, demographic segmentation, sentiment, and limited-edition purchasing behavior.</p>
+      <h3>Key Analytical Findings</h3>
+      <p><strong>Price elasticity:</strong> The 10–20% discount range generated the highest revenue ($2.60M), outperforming both no-discount ($1.76M) and deep 40–50% discounts ($1.62M), indicating that moderate promotions are most efficient. <strong>Segment targeting:</strong> Younger, non-loyalty customers in urban markets (Dallas, Phoenix) showed the highest promo response rates. <strong>Limited-edition buyers:</strong> Middle-aged customers (45–64) spending an average of $687 with 2.3 orders per customer represent Nike's most valuable repeat segment. <strong>Sentiment:</strong> Running shoes and lifestyle sneakers led in both rating and review volume, while cleats underperformed — pointing to design or expectation gaps.</p>
+      <h3>Recommendations</h3>
+      <p>Apply deep discounts selectively during clearance periods; preserve full-price positioning for loyal segments through early access programs; prioritize limited-edition launches in specialty retail with targeted online expansion; align marketing spend with high-rated product lines to amplify brand trust.</p>
+      <h3>Tools Used</h3>
+      <p>MySQL (schema design, sample queries), AI-generated simulated Nike sales dataset, EER diagramming, SQL analytics (SELECT, JOIN, CASE, GROUP BY, CTEs).</p>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Modal
+  function openModal(id) {
+    document.getElementById('modal-'+id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(e, id) {
+    if (e.target === e.currentTarget) closeModalBtn(id);
+  }
+  function closeModalBtn(id) {
+    document.getElementById('modal-'+id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open'); document.body.style.overflow='';
+      });
+    }
+  });
+
+  // ── REAL DATA FROM CAPSTONE_MASTER.XLSX ──
+  const frData = [{"d":"2010-01","fr":84.7,"ai":100.0,"li":100.0},{"d":"2010-02","fr":86.1,"ai":101.6,"li":100.0},{"d":"2010-03","fr":87.8,"ai":103.6,"li":100.0},{"d":"2010-04","fr":88.7,"ai":104.7,"li":100.0},{"d":"2010-06","fr":88.1,"ai":103.8,"li":99.8},{"d":"2010-07","fr":90.1,"ai":106.1,"li":99.8},{"d":"2010-08","fr":90.7,"ai":106.9,"li":99.8},{"d":"2010-09","fr":92.7,"ai":109.2,"li":99.8},{"d":"2010-10","fr":93.7,"ai":110.3,"li":99.8},{"d":"2010-11","fr":92.2,"ai":108.6,"li":99.8},{"d":"2010-12","fr":93.0,"ai":109.5,"li":99.7},{"d":"2011-01","fr":92.7,"ai":109.0,"li":99.7},{"d":"2011-02","fr":94.3,"ai":110.9,"li":99.7},{"d":"2011-03","fr":93.5,"ai":110.0,"li":99.7},{"d":"2011-04","fr":95.8,"ai":112.8,"li":99.7},{"d":"2011-05","fr":96.4,"ai":113.4,"li":99.8},{"d":"2011-06","fr":95.0,"ai":111.9,"li":99.7},{"d":"2011-07","fr":97.4,"ai":114.7,"li":99.8},{"d":"2011-08","fr":98.8,"ai":116.3,"li":99.8},{"d":"2011-09","fr":98.4,"ai":116.0,"li":99.9},{"d":"2011-10","fr":101.8,"ai":119.9,"li":99.9},{"d":"2011-11","fr":100.4,"ai":118.4,"li":99.9},{"d":"2011-12","fr":102.5,"ai":120.8,"li":99.9},{"d":"2012-01","fr":106.1,"ai":125.0,"li":99.9},{"d":"2012-02","fr":108.3,"ai":127.7,"li":99.9},{"d":"2012-03","fr":109.3,"ai":128.7,"li":99.9},{"d":"2012-04","fr":109.8,"ai":129.5,"li":99.9},{"d":"2012-05","fr":108.8,"ai":128.4,"li":99.9},{"d":"2012-06","fr":110.4,"ai":130.2,"li":99.9},{"d":"2012-07","fr":113.4,"ai":133.8,"li":100.0},{"d":"2012-08","fr":114.4,"ai":134.9,"li":99.9},{"d":"2012-09","fr":115.6,"ai":136.3,"li":99.9},{"d":"2012-10","fr":115.9,"ai":136.7,"li":99.9},{"d":"2012-11","fr":116.0,"ai":136.7,"li":99.9},{"d":"2012-12","fr":115.7,"ai":136.4,"li":99.9},{"d":"2013-01","fr":117.0,"ai":137.9,"li":99.9},{"d":"2013-02","fr":118.3,"ai":139.5,"li":99.9},{"d":"2013-04","fr":122.4,"ai":144.1,"li":99.8},{"d":"2013-05","fr":121.4,"ai":142.9,"li":99.7},{"d":"2013-06","fr":118.1,"ai":138.9,"li":99.7},{"d":"2013-07","fr":120.1,"ai":141.2,"li":99.7},{"d":"2013-08","fr":118.1,"ai":138.9,"li":99.7},{"d":"2013-09","fr":119.3,"ai":140.3,"li":99.7},{"d":"2013-10","fr":122.2,"ai":143.7,"li":99.7},{"d":"2013-11","fr":123.4,"ai":145.1,"li":99.7},{"d":"2013-12","fr":123.2,"ai":144.9,"li":99.6},{"d":"2014-01","fr":123.6,"ai":145.4,"li":99.7},{"d":"2014-02","fr":125.9,"ai":148.1,"li":99.7},{"d":"2014-03","fr":127.5,"ai":150.0,"li":99.7},{"d":"2014-04","fr":128.8,"ai":151.5,"li":99.7},{"d":"2014-05","fr":130.9,"ai":154.0,"li":99.7},{"d":"2014-06","fr":131.7,"ai":154.9,"li":99.7},{"d":"2014-07","fr":131.8,"ai":155.1,"li":99.7},{"d":"2014-08","fr":136.2,"ai":160.4,"li":99.8},{"d":"2014-09","fr":135.0,"ai":158.9,"li":99.7},{"d":"2014-10","fr":138.4,"ai":163.0,"li":99.8},{"d":"2014-11","fr":141.3,"ai":166.4,"li":99.8},{"d":"2014-12","fr":142.0,"ai":167.2,"li":99.8},{"d":"2015-01","fr":143.7,"ai":169.3,"li":99.9},{"d":"2015-02","fr":144.5,"ai":170.2,"li":99.8},{"d":"2015-03","fr":143.3,"ai":168.8,"li":99.8},{"d":"2015-04","fr":143.4,"ai":168.8,"li":99.8},{"d":"2015-05","fr":143.3,"ai":168.7,"li":99.8},{"d":"2015-06","fr":140.3,"ai":165.2,"li":99.7},{"d":"2015-07","fr":143.2,"ai":168.6,"li":99.8},{"d":"2015-08","fr":139.2,"ai":163.9,"li":99.8},{"d":"2015-09","fr":139.1,"ai":163.7,"li":99.8},{"d":"2015-10","fr":143.8,"ai":169.3,"li":99.8},{"d":"2015-11","fr":143.8,"ai":169.3,"li":99.8},{"d":"2015-12","fr":142.8,"ai":168.1,"li":99.8},{"d":"2016-01","fr":143.0,"ai":168.3,"li":99.8},{"d":"2016-02","fr":143.4,"ai":168.9,"li":99.8},{"d":"2016-03","fr":148.0,"ai":174.3,"li":99.8},{"d":"2016-04","fr":148.1,"ai":174.4,"li":99.8},{"d":"2016-05","fr":149.1,"ai":175.6,"li":99.8},{"d":"2016-06","fr":152.4,"ai":179.6,"li":99.9},{"d":"2016-07","fr":156.4,"ai":184.3,"li":99.9},{"d":"2016-08","fr":157.3,"ai":185.4,"li":99.9},{"d":"2016-09","fr":156.9,"ai":184.8,"li":99.8},{"d":"2016-10","fr":155.6,"ai":183.2,"li":99.8},{"d":"2016-11","fr":153.6,"ai":180.8,"li":99.8},{"d":"2016-12","fr":156.2,"ai":183.9,"li":99.7},{"d":"2017-01","fr":157.7,"ai":185.6,"li":99.7},{"d":"2017-02","fr":162.5,"ai":191.3,"li":99.8},{"d":"2017-03","fr":161.8,"ai":190.5,"li":99.8},{"d":"2017-04","fr":162.8,"ai":191.6,"li":99.8},{"d":"2017-05","fr":164.3,"ai":193.5,"li":99.8},{"d":"2017-06","fr":165.7,"ai":195.0,"li":99.8},{"d":"2017-07","fr":167.8,"ai":197.5,"li":99.8},{"d":"2017-08","fr":171.0,"ai":201.3,"li":99.8},{"d":"2017-09","fr":170.3,"ai":200.5,"li":99.8},{"d":"2017-10","fr":173.1,"ai":203.8,"li":99.8},{"d":"2017-11","fr":175.0,"ai":206.1,"li":99.8},{"d":"2017-12","fr":177.2,"ai":208.7,"li":99.8},{"d":"2018-01","fr":177.9,"ai":209.4,"li":99.8},{"d":"2018-02","fr":174.1,"ai":204.9,"li":99.7},{"d":"2018-04","fr":172.0,"ai":202.1,"li":99.6},{"d":"2018-05","fr":173.8,"ai":204.2,"li":99.6},{"d":"2018-06","fr":174.2,"ai":204.7,"li":99.6},{"d":"2018-07","fr":178.1,"ai":209.3,"li":99.6},{"d":"2018-08","fr":182.1,"ai":213.9,"li":99.6},{"d":"2018-09","fr":180.8,"ai":212.4,"li":99.6},{"d":"2018-10","fr":177.7,"ai":208.7,"li":99.5},{"d":"2018-11","fr":178.5,"ai":209.6,"li":99.6},{"d":"2018-12","fr":175.4,"ai":206.1,"li":99.6},{"d":"2019-01","fr":181.2,"ai":212.9,"li":99.6},{"d":"2019-02","fr":182.6,"ai":214.6,"li":99.6},{"d":"2019-03","fr":188.0,"ai":221.0,"li":99.6},{"d":"2019-04","fr":192.1,"ai":225.8,"li":99.6},{"d":"2019-05","fr":191.0,"ai":224.6,"li":99.6},{"d":"2019-06","fr":198.7,"ai":233.6,"li":99.7},{"d":"2019-07","fr":201.0,"ai":236.3,"li":99.7},{"d":"2019-08","fr":207.0,"ai":243.6,"li":99.7},{"d":"2019-09","fr":207.2,"ai":243.7,"li":99.7},{"d":"2019-10","fr":210.1,"ai":247.1,"li":99.7},{"d":"2019-11","fr":212.9,"ai":250.5,"li":99.7},{"d":"2019-12","fr":215.6,"ai":253.6,"li":99.7},{"d":"2020-01","fr":222.3,"ai":261.6,"li":99.7},{"d":"2020-02","fr":217.8,"ai":256.4,"li":99.8},{"d":"2020-03","fr":208.4,"ai":245.4,"li":99.8},{"d":"2020-04","fr":220.6,"ai":259.8,"li":99.8},{"d":"2020-05","fr":223.7,"ai":263.4,"li":99.8},{"d":"2020-06","fr":226.6,"ai":266.9,"li":99.8},{"d":"2020-07","fr":235.6,"ai":277.5,"li":99.8},{"d":"2020-08","fr":240.0,"ai":282.6,"li":99.8},{"d":"2020-09","fr":236.3,"ai":278.3,"li":99.8},{"d":"2020-10","fr":230.6,"ai":271.5,"li":99.8},{"d":"2020-11","fr":243.2,"ai":286.3,"li":99.8},{"d":"2020-12","fr":249.0,"ai":293.1,"li":99.8},{"d":"2021-01","fr":245.4,"ai":288.7,"li":99.7},{"d":"2021-02","fr":244.7,"ai":287.8,"li":99.7},{"d":"2021-03","fr":244.8,"ai":287.9,"li":99.7},{"d":"2021-04","fr":251.4,"ai":295.7,"li":99.7},{"d":"2021-06","fr":258.7,"ai":304.1,"li":99.6},{"d":"2021-07","fr":265.2,"ai":311.9,"li":99.6},{"d":"2021-08","fr":267.7,"ai":314.7,"li":99.6},{"d":"2021-09","fr":260.6,"ai":306.3,"li":99.6},{"d":"2021-10","fr":267.5,"ai":314.5,"li":99.6},{"d":"2021-11","fr":266.7,"ai":313.6,"li":99.6},{"d":"2021-12","fr":272.9,"ai":320.8,"li":99.6},{"d":"2022-01","fr":265.8,"ai":312.4,"li":99.6},{"d":"2022-02","fr":261.0,"ai":306.7,"li":99.6},{"d":"2022-03","fr":258.9,"ai":304.1,"li":99.6},{"d":"2022-04","fr":245.0,"ai":287.7,"li":99.5},{"d":"2022-05","fr":244.4,"ai":286.8,"li":99.5},{"d":"2022-06","fr":234.0,"ai":274.6,"li":99.5},{"d":"2022-07","fr":244.0,"ai":286.5,"li":99.5},{"d":"2022-08","fr":235.2,"ai":276.0,"li":99.4},{"d":"2022-09","fr":219.4,"ai":257.3,"li":99.4},{"d":"2022-10","fr":225.8,"ai":264.6,"li":99.3},{"d":"2022-11","fr":238.8,"ai":280.1,"li":99.4},{"d":"2022-12","fr":232.7,"ai":272.8,"li":99.4},{"d":"2023-01","fr":242.2,"ai":284.1,"li":99.4},{"d":"2023-02","fr":235.5,"ai":276.1,"li":99.4},{"d":"2023-03","fr":242.9,"ai":284.9,"li":99.4},{"d":"2023-04","fr":248.1,"ai":291.0,"li":99.4},{"d":"2023-05","fr":243.3,"ai":285.2,"li":99.4},{"d":"2023-06","fr":249.1,"ai":292.0,"li":99.4},{"d":"2023-07","fr":251.4,"ai":294.7,"li":99.3},{"d":"2023-08","fr":246.6,"ai":289.0,"li":99.3},{"d":"2023-09","fr":236.4,"ai":276.9,"li":99.3},{"d":"2023-10","fr":232.3,"ai":271.9,"li":99.2},{"d":"2023-11","fr":249.1,"ai":291.8,"li":99.3},{"d":"2023-12","fr":259.4,"ai":304.0,"li":99.3},{"d":"2024-01","fr":260.8,"ai":305.6,"li":99.3},{"d":"2024-02","fr":261.5,"ai":306.4,"li":99.3},{"d":"2024-04","fr":257.1,"ai":300.0,"li":98.9},{"d":"2024-05","fr":265.3,"ai":309.6,"li":98.9},{"d":"2024-06","fr":268.1,"ai":313.0,"li":98.9},{"d":"2024-07","fr":276.8,"ai":323.2,"li":98.9},{"d":"2024-08","fr":284.2,"ai":331.9,"li":99.0},{"d":"2024-09","fr":286.3,"ai":334.4,"li":99.0},{"d":"2024-10","fr":281.0,"ai":328.0,"li":98.9},{"d":"2024-11","fr":291.0,"ai":339.7,"li":98.9},{"d":"2024-12","fr":281.4,"ai":328.4,"li":98.9},{"d":"2025-01","fr":287.2,"ai":335.1,"li":98.9},{"d":"2025-02","fr":296.2,"ai":345.7,"li":98.9},{"d":"2025-03","fr":291.5,"ai":340.3,"li":98.9},{"d":"2025-04","fr":289.5,"ai":337.9,"li":98.9},{"d":"2025-05","fr":292.2,"ai":340.9,"li":98.9},{"d":"2025-06","fr":298.2,"ai":348.0,"li":98.9},{"d":"2025-07","fr":299.0,"ai":348.8,"li":98.9},{"d":"2025-08","fr":305.3,"ai":356.2,"li":98.9},{"d":"2025-09","fr":312.6,"ai":364.8,"li":98.9},{"d":"2025-10","fr":313.6,"ai":366.0,"li":98.9},{"d":"2025-11","fr":313.2,"ai":365.6,"li":98.9}];
+
+  const annualReturns = {
+    labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'],
+    values: [-4.5, 6.8, 14.4, -5.4, 20.2, 11.8, 10.9, -16.4, 11.6, 7.6, 12.7]
+  };
+
+  // Draw charts when DOM is ready
+  window.addEventListener('load', () => {
+    Chart.defaults.font.family = "'DM Mono', monospace";
+    Chart.defaults.font.size = 9;
+    Chart.defaults.color = '#8a8070';
+
+    // Funded ratio line chart
+    const frCtx = document.getElementById('frChart');
+    if (frCtx) {
+      new Chart(frCtx, {
+        type: 'line',
+        data: {
+          labels: frData.map(d => d.d),
+          datasets: [
+            {
+              label: 'Funded Ratio (%)',
+              data: frData.map(d => d.fr),
+              borderColor: '#b8922a',
+              borderWidth: 1.5,
+              pointRadius: 0,
+              fill: true,
+              backgroundColor: 'rgba(184,146,42,0.08)',
+              tension: 0.3
+            },
+            {
+              label: 'Asset Index',
+              data: frData.map(d => d.ai),
+              borderColor: '#2d6a4f',
+              borderWidth: 1,
+              pointRadius: 0,
+              fill: false,
+              tension: 0.3,
+              yAxisID: 'y2'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          interaction: { mode: 'index', intersect: false },
+          plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 8, padding: 8, font:{size:8} } } },
+          scales: {
+            x: {
+              ticks: { maxTicksLimit: 8, maxRotation: 0 },
+              grid: { color: 'rgba(0,0,0,0.04)' }
+            },
+            y: {
+              title: { display: true, text: 'Funded Ratio (%)', font:{size:8} },
+              grid: { color: 'rgba(0,0,0,0.04)' }
+            },
+            y2: {
+              position: 'right',
+              title: { display: true, text: 'Asset Index', font:{size:8} },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    // Annual returns bar chart
+    const aCtx = document.getElementById('annualChart');
+    if (aCtx) {
+      new Chart(aCtx, {
+        type: 'bar',
+        data: {
+          labels: annualReturns.labels,
+          datasets: [{
+            data: annualReturns.values,
+            backgroundColor: annualReturns.values.map(v => v >= 0 ? 'rgba(45,106,79,0.75)' : 'rgba(155,34,38,0.75)'),
+            borderWidth: 0,
+            borderRadius: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false } },
+            y: {
+              grid: { color: 'rgba(0,0,0,0.04)' },
+              ticks: { callback: v => v + '%' }
+            }
+          }
+        }
+      });
+    }
+    // Ponni Sugars ratios chart
+    const ponniCtx = document.getElementById('ponniChart');
+    if (ponniCtx) {
+      new Chart(ponniCtx, {
+        type: 'bar',
+        data: {
+          labels: ['2021', '2022', '2023'],
+          datasets: [
+            { label: 'Current Ratio', data: [2.77, 3.29, 3.0], backgroundColor: 'rgba(45,106,79,0.75)', borderRadius: 2 },
+            { label: 'Quick Ratio', data: [1.57, 1.52, 1.28], backgroundColor: 'rgba(184,146,42,0.75)', borderRadius: 2 },
+            { label: 'Inventory Turnover', data: [4.63, 3.76, 4.62], backgroundColor: 'rgba(69,123,157,0.75)', borderRadius: 2 },
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: true,
+          plugins: { legend: { position: 'top', labels: { boxWidth: 8, padding: 8, font:{size:8} } } },
+          scales: {
+            x: { grid: { display: false } },
+            y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font:{size:8} } }
+          }
+        }
+      });
+    }
+  }); // end window.addEventListener load
+</script>
+</body>
+</html>
